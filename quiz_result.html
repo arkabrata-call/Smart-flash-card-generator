@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Results</title>
+    <style>
+        /* General Styles */
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 { 
+            font-size: 2rem;
+        }
+
+        /* Result Summary Box */
+        .summary {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .summary p {
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+
+        /* Correct & Incorrect Styles */
+        .correct { 
+            color: #4CAF50; 
+            font-weight: bold; 
+        }
+
+        .incorrect { 
+            color: #ff4c4c; 
+            font-weight: bold; 
+        }
+
+        /* Answer Details */
+        .details-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .detail {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .detail b {
+            color: #ffd700;
+        }
+
+        /* Navigation Button */
+        .home-btn {
+            margin-top: 20px;
+            display: inline-block;
+            background: #ffd700;
+            color: black;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+        }
+
+        .home-btn:hover {
+            background: #ffcc00;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Results</h1>
+
+    <div class="summary">
+        <p>Your Score: <strong>{{ score }}</strong> / <strong>{{ total }}</strong></p>
+        <p>Accuracy: <strong>{{ (score / total * 100) | round(2) }}%</strong></p>
+    </div>
+
+    <h2>Answer Details:</h2>
+    <div class="details-box">
+        {% for detail in result_details %}
+            <div class="detail">
+                <b>Q:</b> {{ detail.question }}<br>
+                <b>Your Answer:</b> 
+                <span class="{% if detail.correct %}correct{% else %}incorrect{% endif %}">
+                    {{ detail.your_answer if detail.your_answer else "No Answer" }}
+                </span>
+                {% if not detail.correct %}
+                    <br> <b>Correct Answer:</b> {{ detail.correct_answer }}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ url_for('home') }}" class="home-btn">Back to Home</a>
+</body>
+</html>

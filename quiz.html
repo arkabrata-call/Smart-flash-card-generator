@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        /* Quiz Form */
+        form {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        p {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        /* Radio Button Styling */
+        input[type="radio"] {
+            margin: 8px 10px;
+            transform: scale(1.2);
+            accent-color: #ffd700;
+        }
+
+        label {
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Submit Button */
+        button {
+            background-color: #ffd700;
+            color: black;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background: #ffcc00;
+            transform: scale(1.05);
+        }
+
+        /* Back to Home Link */
+        a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Time! 🎯</h1>
+    <form method="POST">
+        {% for question in questions %}
+            <p>Question {{ loop.index }}: {{ question.question }}</p>
+            {% for option in question.options %}
+                <label>
+                    <input type="radio" name="question_{{ loop.index0 }}" value="{{ option }}"> {{ option }}
+                </label><br>
+            {% endfor %}
+        {% endfor %}
+        <button type="submit">Submit Quiz</button>
+    </form>
+
+    <a href="/">⬅ Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Profile</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            background: #ffd700;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-buttons a:hover {
+            background: #ffcc00;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <h1>Welcome, {{ user['name'] }}</h1>
+        <p><strong>Email:</strong> {{ user['email'] }}</p>
+
+        <div class="nav-buttons">
+            <a href="/">Back to Home</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+</body>
+</html>
