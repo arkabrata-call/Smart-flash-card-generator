@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Smart Flashcard Generator</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #ffffff;
+            display: flex;
+            height: 100vh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Form Styling */
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            backdrop-filter: blur(8px);
+        }
+
+        input[type="file"],
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            border: 2px solid #ffcc00;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Buttons */
+        button {
+            background: #ffcc00;
+            color: #222;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background: #ffd633;
+            transform: scale(1.05);
+        }
+
+        .login-button {
+            background: #ff3366;
+        }
+
+        .login-button:hover {
+            background: #ff6699;
+        }
+
+        /* Links */
+        a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 10px;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ffd633;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 30px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Smart Flashcard Generator</h1>
+
+    <!-- Login Button Section -->
+    <div class="section">
+        <form action="/login-page">
+            <button type="submit" class="login-button">Go to Login</button>
+        </form>
+    </div>
+
+    <!-- File Upload Section -->
+    <div class="section">
+        <h2>Upload PDF File</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="pdfFile" required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="section">
+        <a href="/quiz">Take Quiz</a> |
+        <a href="/study-plan">View Study Plan</a>
+    </div>
+</body>
+</html>

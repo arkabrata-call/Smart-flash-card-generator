@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 60%;
+        }
+        li {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 5px solid #ffcc00;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 8px 0;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.5s ease-in-out;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            width: 60%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+        input[type="radio"] {
+            margin: 5px 10px;
+            transform: scale(1.2);
+        }
+        button {
+            background: #ffcc00;
+            color: #222;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background: #ffd633;
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Generated Flashcards</h1>
+    <ul>
+        {% for flashcard in flashcards %}
+            <li>{{ flashcard }}</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Generated Quiz</h1>
+    <form method="POST" action="/quiz">
+        {% for question in questions %}
+            <p>{{ loop.index }}. {{ question.question }}</p>
+            {% for option in question.options %}
+                <input type="radio" name="question_{{ loop.index0 }}" value="{{ option }}"> {{ option }}<br>
+            {% endfor %}
+        {% endfor %}
+        <button type="submit">Submit Quiz</button>
+    </form>
+</body>
+</html>

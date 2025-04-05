@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #ffffff;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Glassmorphism Form */
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            backdrop-filter: blur(15px);
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            color: #f0f0f0;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        input::placeholder {
+            color: #ddd;
+        }
+
+        input:focus {
+            border: 2px solid #ffd700;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Buttons */
+        button {
+            background: linear-gradient(to right, #ff0080, #ff66b2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #ff3399, #ff99cc);
+            transform: scale(1.05);
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-buttons a {
+            background: #ffd700;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-buttons a:hover {
+            background: #ffcc00;
+            transform: scale(1.05);
+        }
+
+        /* Stylish Links */
+        .nav-buttons a {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-buttons a::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: 0;
+            left: -100%;
+            background: black;
+            transition: left 0.3s ease-in-out;
+        }
+
+        .nav-buttons a:hover::after {
+            left: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST">
+        <label>Username:</label>
+        <input type="text" name="username" placeholder="Enter your username" required>
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Enter your password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="nav-buttons">
+        <a href="/">Back to Home</a>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
